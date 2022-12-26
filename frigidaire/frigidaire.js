@@ -50,14 +50,14 @@ async function detailsPage(cityUrl, brand) {
             const $ = cheerio.load(htmlString)
             const postDiv = $(".post")
 
-            $(postDiv).children("p.elenchi").each((i,serviceCenter)=>{
-                arr[i]={}
+            $(postDiv).children("p.elenchi").each((i, serviceCenter) => {
+                arr[i] = {}
                 arr[i]["serviceCenter"] = $(serviceCenter).children("span").children("strong").text()
                 arr[i]["address"] = $(serviceCenter).children("span").children("span.evidenziato").text()
-                if(!/[a-z]/gi.test($(serviceCenter).children("span").last().text()))
-                arr[i]["phone"] = $(serviceCenter).children("span").last().text()
+                if (!/[a-z]/gi.test($(serviceCenter).children("span").last().text()))
+                    arr[i]["phone"] = $(serviceCenter).children("span").last().text()
             })
-            
+
             resolve(arr)
         } catch (error) {
             console.log(error.message)
