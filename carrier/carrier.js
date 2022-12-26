@@ -49,7 +49,6 @@ async function detailsPage(cityUrl, brand) {
             const htmlString = await rp(cityUrl)
             const $ = cheerio.load(htmlString)
             const postDiv = $(".post")
-            const postsDiv = $(".posts")
 
             let count = 0
             $(postDiv).children("div:not(.advlaterale)").each((i, serviceCenter) => {
